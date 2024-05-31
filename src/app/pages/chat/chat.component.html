@@ -9,37 +9,45 @@
     <div class="card">
       <div>
         <div class="col-12 col-lg-12 col-xl-12">
+          @for (message of chats(); track message) {
           <div class="position-relative">
             <div class="chat-messages d-flex flex-column overflow-y-scroll p-4">
               <div class="chat-message-left d-flex flex-shrink-0 pb-4">
                 <div class="me-5">
                   <img
-                    src="https://res.cloudinary.com/dz4tt9omp/image/upload/v1687699216/photo_5960666862087946083_w.jpg"
                     class="rounded-circle mr-1"
                     alt="Sharon Doe"
                     width="40"
                     height="40"
+                    [src]="message?.users?.avatar_url"
                   />
-                  <div class="text-muted small text-nowrap mt-2">5:54 am</div>
+                  <h6 class="text-muted small text-nowrap mt-2">
+                    {{ message?.created_at | date : "M/d/yyyy, h:mm a" }}
+                  </h6>
                 </div>
                 <div class="flex-shrink-1 bg-light rounded py-2 px-3 ml-3">
-                  <div class="font-weight-bold mb-1">Sharon Doe</div>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Aliquid at ullam reiciendis consequatur quis similique ea
-                  sapiente, voluptatem voluptate quia magnam a non corrupti unde
-                  accusantium maiores? Explicabo, maiores inventore!
+                  <h6 class="font-weight-bold mb-1">
+                    {{ message?.users?.full_name }}
+                  </h6>
+                  <span>
+                    {{ message?.text }}
+                  </span>
                 </div>
               </div>
             </div>
           </div>
+          } @empty {
+          <span>Everything seems quiet here...</span>
+          }
           <form [formGroup]="chatForm" (ngSubmit)="onSubmit()">
             <div class="flex-grow-0 py-3 px-4 border-top">
               <div class="input-group">
                 <input
                   formControlName="chat_message"
                   class="form-control"
-                  placeholder="Type your message"
+                  placeholder="Diga algo..."
                   type="text"
+                  (ngModelChange)="tempValidatorRequired()"
                 />
                 <button class="btn btn-primary" [disabled]="!chatForm.valid">
                   Send

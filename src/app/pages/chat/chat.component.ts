@@ -1,4 +1,10 @@
-import { Component, inject } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  effect,
+  inject,
+  signal,
+} from '@angular/core';
 import { AuthService } from '../../services';
 import { Router } from '@angular/router';
 import {
@@ -8,9 +14,11 @@ import {
   Validators,
 } from '@angular/forms';
 import { ChatService } from '../../services/chat.service';
+import { IChatMessage } from '../../interface';
+import { DatePipe } from '@angular/common';
 
 @Component({
-  imports: [ReactiveFormsModule],
+  imports: [DatePipe, ReactiveFormsModule],
   providers: [ChatService],
   selector: 'app-chat',
   standalone: true,
@@ -20,6 +28,8 @@ import { ChatService } from '../../services/chat.service';
 export class ChatComponent {
   private authService = inject(AuthService);
 
+  private changeDetector = inject(ChangeDetectorRef);
+
   private chatService = inject(ChatService);
 
   private formBuilder = inject(FormBuilder);
@@ -28,10 +38,20 @@ export class ChatComponent {
 
   public chatForm!: FormGroup;
 
+  public chats = signal<IChatMessage[]>([]);
+
   constructor() {
     this.chatForm = this.formBuilder.group({
       chat_message: ['', Validators.required],
     });
+
+    effect(() => {
+      this.onListChat();
+    });
+  }
+
+  public tempValidatorRequired() {
+    this.changeDetector.detectChanges();
   }
 
   public handleLogOut(): void {
@@ -45,14 +65,28 @@ export class ChatComponent {
       });
   }
 
-  public onSubmit() {
-    const { chatForm, chatService } = this;
+  public onListChat(): void {
+    this.chatService
+      .listChat()
+      .then((res: IChatMessage[]) => {
+        if (res !== null) {
+          this.chats.set(res);
+        }
+      })
+      .catch((error) => {
+        alert(error);
+      });
+  }
+
+  public onSubmit(): void {
+    const { chatForm } = this;
     const { chat_message } = chatForm.value;
 
-    chatService
+    this.chatService
       .chatMessage(chat_message)
       .then((res) => {
         chatForm.reset();
+        this.onListChat();
       })
       .catch((error) => {
         alert(error);

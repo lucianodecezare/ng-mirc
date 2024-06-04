@@ -7,7 +7,12 @@
   padding: 8px 16px;
 }
 
-.btn-github {
+::ng-deep .btn-github {
   background-color: $white;
   border-color: $white;
+
+  &:active {
+    background-color: $white;
+    border-color: $white;
+  }
 }

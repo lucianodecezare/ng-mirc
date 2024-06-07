@@ -11,8 +11,9 @@
   background-color: $white;
   border-color: $white;
 
-  &:active {
-    background-color: $white;
-    border-color: $white;
+  &:active,
+  &:hover {
+    background-color: $white !important;
+    border-color: $white !important;
   }
 }

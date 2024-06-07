@@ -1,0 +1,18 @@
+<form
+  class="align-items-center d-flex form-bg justify-content-center w-100"
+  [formGroup]="chatForm"
+  (ngSubmit)="onSubmit.next(chatForm.value)"
+>
+  <div class="py-3 px-4 input-div w-100">
+    <div class="d-flex gap-2">
+      <input
+        class="input-text w-100"
+        formControlName="chat_message"
+        placeholder="Say something..."
+        type="text"
+        (ngModelChange)="tempValidatorRequired()"
+      />
+      <button class="btn-send" [disabled]="!chatForm.valid">Send</button>
+    </div>
+  </div>
+</form>

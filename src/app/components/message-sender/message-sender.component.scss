@@ -1,0 +1,46 @@
+@import "../../assets/styles/constants.scss";
+
+:host {
+  bottom: 0;
+  position: fixed;
+  width: 100%;
+
+  .btn-send {
+    background-color: $blue;
+    border-radius: 8px;
+    border: none;
+    color: $white;
+    width: 80px;
+
+    &:disabled {
+      background-color: $silver;
+      color: $white;
+    }
+
+    &:hover:not(:disabled) {
+      background-color: $darkBlue;
+    }
+  }
+
+  .form-bg {
+    background-color: $black;
+  }
+
+  .input-div {
+    max-width: 1440px;
+
+    .input-text {
+      background-color: $black;
+      border-radius: 8px;
+      border: 1px solid $white;
+      color: $white;
+      padding: 8px;
+
+      &:active,
+      &:focus {
+        border-color: $white;
+        outline: none;
+      }
+    }
+  }
+}

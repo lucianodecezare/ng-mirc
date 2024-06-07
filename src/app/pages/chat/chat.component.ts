@@ -16,9 +16,10 @@ import {
 import { ChatService } from '../../services/chat.service';
 import { IChatMessage } from '../../interface';
 import { DatePipe } from '@angular/common';
+import { MessageSenderComponent } from '../../components/';
 
 @Component({
-  imports: [DatePipe, ReactiveFormsModule],
+  imports: [DatePipe, MessageSenderComponent, ReactiveFormsModule],
   providers: [ChatService],
   selector: 'app-chat',
   standalone: true,
@@ -78,9 +79,9 @@ export class ChatComponent {
       });
   }
 
-  public onSubmit(): void {
+  public onSubmit(event: { chat_message: string }): void {
     const { chatForm } = this;
-    const { chat_message } = chatForm.value;
+    const { chat_message } = event;
 
     this.chatService
       .chatMessage(chat_message)

@@ -39,24 +39,9 @@
           } @empty {
           <span>Everything seems quiet here...</span>
           }
-          <form [formGroup]="chatForm" (ngSubmit)="onSubmit()">
-            <div class="flex-grow-0 py-3 px-4 border-top">
-              <div class="input-group">
-                <input
-                  formControlName="chat_message"
-                  class="form-control"
-                  placeholder="Diga algo..."
-                  type="text"
-                  (ngModelChange)="tempValidatorRequired()"
-                />
-                <button class="btn btn-primary" [disabled]="!chatForm.valid">
-                  Send
-                </button>
-              </div>
-            </div>
-          </form>
         </div>
       </div>
     </div>
   </div>
 </main>
+<app-message-sender [chatForm]="chatForm" (onSubmit)="onSubmit($event)" />

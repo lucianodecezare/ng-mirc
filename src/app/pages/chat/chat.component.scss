@@ -1,7 +1,15 @@
-.chat-messages {
-  max-height: 800px;
+:host {
+  height: 100vh;
 
-  .chat-message-left {
-    margin-right: auto;
+  main {
+    margin-bottom: 80px !important;
+
+    .chat-messages {
+      max-height: 800px;
+
+      .chat-message-left {
+        margin-right: auto;
+      }
+    }
   }
 }

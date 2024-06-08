@@ -1,46 +1,43 @@
 <main>
-  <div class="container">
+  <div class="max-width m-auto">
     <h3 class="mb-3">
       NG Mirc
       <button class="btn btn-secondary float-end" (click)="handleLogOut()">
         Logout
       </button>
     </h3>
-    <div class="card">
-      <div>
-        <div class="col-12 col-lg-12 col-xl-12">
-          @for (message of chats(); track message) {
-          <div class="position-relative">
-            <div class="chat-messages d-flex flex-column overflow-y-scroll p-4">
-              <div class="chat-message-left d-flex flex-shrink-0 pb-4">
-                <div class="me-5">
-                  <img
-                    class="rounded-circle mr-1"
-                    alt="Sharon Doe"
-                    width="40"
-                    height="40"
-                    [src]="message?.users?.avatar_url"
-                  />
-                  <h6 class="text-muted small text-nowrap mt-2">
-                    {{ message?.created_at | date : "M/d/yyyy, h:mm a" }}
-                  </h6>
-                </div>
-                <div class="flex-shrink-1 bg-light rounded py-2 px-3 ml-3">
-                  <h6 class="font-weight-bold mb-1">
-                    {{ message?.users?.full_name }}
-                  </h6>
-                  <span>
-                    {{ message?.text }}
-                  </span>
-                </div>
-              </div>
-            </div>
+    <div class="">
+      @for (message of chats(); track message) {
+      <div class="bg-message d-flex my-2 py-3 gap-4 w-100">
+        <div
+          class="date-image-container d-flex flex-column gap-2 align-items-center"
+        >
+          <img
+            class="img-profile"
+            alt="Image profile"
+            width="80"
+            height="80"
+            [src]="message?.users?.avatar_url"
+          />
+        </div>
+        <div class="py-2 px-3 ml-3 w-100">
+          <div class="align-items-center d-flex gap-2">
+            <h6 class="font-weight-bold mb-1 text-white">
+              {{ message?.users?.full_name }}
+            </h6>
+            <span class="text-white">-</span>
+            <span class="small text-white">
+              {{ message?.created_at | date : "dd/MM/yyyy - hh:mm a" }}
+            </span>
           </div>
-          } @empty {
-          <span>Everything seems quiet here...</span>
-          }
+          <span class="text-white">
+            {{ message?.text }}
+          </span>
         </div>
       </div>
+      } @empty {
+      <span>Everything seems quiet here...</span>
+      }
     </div>
   </div>
 </main>

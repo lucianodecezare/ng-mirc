@@ -50,3 +50,38 @@ span {
 #__next {
   isolation: isolate;
 }
+
+.btn-std {
+  align-items: center;
+  border-radius: 8px;
+  border: none;
+  display: flex;
+  justify-content: center;
+
+  &:disabled {
+    background-color: $silver;
+    color: $white;
+  }
+
+  &:hover:not(:disabled) {
+    background-color: $white;
+  }
+
+  &.btn-blue {
+    background-color: $darkBlue;
+    color: $white;
+
+    &:hover:not(:disabled) {
+      background-color: $blue;
+    }
+  }
+
+  &.btn-red {
+    background-color: $darkRed;
+    color: $white;
+
+    &:hover:not(:disabled) {
+      background-color: $red;
+    }
+  }
+}

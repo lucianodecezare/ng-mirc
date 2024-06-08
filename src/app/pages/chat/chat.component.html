@@ -1,47 +1,48 @@
 <main>
   <div class="max-width m-auto py-3">
-    <h3 class="mb-3">
-      NG Mirc
+    <div class="align-items-center d-flex justify-content-between">
+      <h3 class="mb-3 text-white">
+        <i class="fa-brands fa-angular"></i>
+        mIRC
+      </h3>
       <button
         class="btn-std btn-red btn-logout float-end mb-3"
         (click)="handleLogOut()"
       >
         <i class="fa-solid fa-xmark"></i>
       </button>
-    </h3>
-    <div class="">
-      @for (message of chats(); track message) {
-      <div class="bg-message d-flex my-2 py-3 gap-4 w-100">
-        <div
-          class="date-image-container d-flex flex-column gap-2 align-items-center"
-        >
-          <img
-            class="img-profile"
-            alt="Image profile"
-            width="80"
-            height="80"
-            [src]="message?.users?.avatar_url"
-          />
-        </div>
-        <div class="py-2 px-3 ml-3 w-100">
-          <div class="align-items-center d-flex gap-2">
-            <h6 class="font-weight-bold mb-1 text-white">
-              {{ message?.users?.full_name }}
-            </h6>
-            <span class="text-white">-</span>
-            <span class="small text-white">
-              {{ message?.created_at | date : "dd/MM/yyyy - hh:mm a" }}
-            </span>
-          </div>
-          <span class="text-white">
-            {{ message?.text }}
+    </div>
+    @for (message of chats(); track message) {
+    <div class="bg-message d-flex my-2 py-3 gap-4 w-100">
+      <div
+        class="date-image-container d-flex flex-column gap-2 align-items-center"
+      >
+        <img
+          class="img-profile"
+          alt="Image profile"
+          width="80"
+          height="80"
+          [src]="message?.users?.avatar_url"
+        />
+      </div>
+      <div class="py-2 px-3 ml-3 w-100">
+        <div class="align-items-center d-flex gap-2">
+          <h6 class="font-weight-bold mb-1 text-white">
+            {{ message?.users?.full_name }}
+          </h6>
+          <span class="text-white">-</span>
+          <span class="small text-white">
+            {{ message?.created_at | date : "dd/MM/yyyy - hh:mm a" }}
           </span>
         </div>
+        <span class="text-white">
+          {{ message?.text }}
+        </span>
       </div>
-      } @empty {
-      <span>Everything seems quiet here...</span>
-      }
     </div>
+    } @empty {
+    <span>Everything seems quiet here...</span>
+    }
   </div>
 </main>
 <app-message-sender [chatForm]="chatForm" (onSubmit)="onSubmit($event)" />

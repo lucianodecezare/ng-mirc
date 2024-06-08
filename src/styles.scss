@@ -58,11 +58,6 @@ span {
   display: flex;
   justify-content: center;
 
-  &:disabled {
-    background-color: $silver;
-    color: $white;
-  }
-
   &:hover:not(:disabled) {
     background-color: $white;
   }
@@ -83,5 +78,10 @@ span {
     &:hover:not(:disabled) {
       background-color: $red;
     }
+  }
+
+  &:disabled {
+    background-color: $silver;
+    color: $white;
   }
 }

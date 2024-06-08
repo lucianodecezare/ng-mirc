@@ -9,10 +9,13 @@
         class="input-text w-100"
         formControlName="chat_message"
         placeholder="Say something..."
+        spellcheck="false"
         type="text"
         (ngModelChange)="tempValidatorRequired()"
       />
-      <button class="btn-send" [disabled]="!chatForm.valid">Send</button>
+      <button class="btn-std btn-blue btn-send" [disabled]="!chatForm.valid">
+        <i class="fa-solid fa-hippo"></i>
+      </button>
     </div>
   </div>
 </form>

@@ -1,9 +1,12 @@
 <main>
-  <div class="max-width m-auto">
+  <div class="max-width m-auto py-3">
     <h3 class="mb-3">
       NG Mirc
-      <button class="btn btn-secondary float-end" (click)="handleLogOut()">
-        Logout
+      <button
+        class="btn-std btn-red btn-logout float-end mb-3"
+        (click)="handleLogOut()"
+      >
+        <i class="fa-solid fa-xmark"></i>
       </button>
     </h3>
     <div class="">

@@ -22,21 +22,8 @@
       border-radius: 8px;
     }
 
-    .chat-messages {
-      max-height: 800px;
-
-      .chat-message-left {
-        margin-right: auto;
-      }
-    }
-
     .date-image-container {
       width: 188px;
-
-      .img-profile {
-        border: 4px solid $blue;
-        border-radius: 8px;
-      }
     }
 
     .fs-40 {
@@ -45,10 +32,6 @@
 
     .fs-80 {
       font-size: 80px;
-    }
-
-    .text-white {
-      color: $white;
     }
   }
 }

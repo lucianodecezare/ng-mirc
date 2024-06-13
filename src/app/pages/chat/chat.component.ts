@@ -15,13 +15,13 @@ import {
 } from '@angular/forms';
 import { ChatService } from '../../services/chat.service';
 import { IChatMessage } from '../../interface';
-import { DatePipe } from '@angular/common';
 import { AvatarComponent, MessageSenderComponent } from '../../components/';
+import { MessageComponent } from '../../components/message/message.component';
 
 @Component({
   imports: [
     AvatarComponent,
-    DatePipe,
+    MessageComponent,
     MessageSenderComponent,
     ReactiveFormsModule,
   ],

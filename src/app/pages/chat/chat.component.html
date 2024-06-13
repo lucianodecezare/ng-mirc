@@ -19,20 +19,11 @@
       >
         <app-avatar [src]="message?.users?.avatar_url" />
       </div>
-      <div class="py-2 px-3 ml-3 w-100">
-        <div class="align-items-center d-flex gap-2">
-          <h6 class="font-weight-bold mb-1 text-white">
-            {{ message?.users?.full_name }}
-          </h6>
-          <span class="text-white">-</span>
-          <span class="small text-white">
-            {{ message?.created_at | date : "dd/MM/yyyy - hh:mm a" }}
-          </span>
-        </div>
-        <span class="text-white">
-          {{ message?.text }}
-        </span>
-      </div>
+      <app-message
+        [date]="message?.created_at"
+        [message]="message?.text"
+        [name]="message?.users?.full_name"
+      />
     </div>
     } @empty {
     <div class="align-items-center d-flex flex-column gap-4 my-2 py-2">

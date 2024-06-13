@@ -1,0 +1,8 @@
+@import "../../assets/styles/constants.scss";
+
+:host {
+  .img-profile {
+    border: 4px solid $blue;
+    border-radius: 8px;
+  }
+}

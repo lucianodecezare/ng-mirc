@@ -17,13 +17,7 @@
       <div
         class="date-image-container d-flex flex-column gap-2 align-items-center"
       >
-        <img
-          class="img-profile"
-          alt="Image profile"
-          width="80"
-          height="80"
-          [src]="message?.users?.avatar_url"
-        />
+        <app-avatar [src]="message?.users?.avatar_url" />
       </div>
       <div class="py-2 px-3 ml-3 w-100">
         <div class="align-items-center d-flex gap-2">

@@ -16,10 +16,15 @@ import {
 import { ChatService } from '../../services/chat.service';
 import { IChatMessage } from '../../interface';
 import { DatePipe } from '@angular/common';
-import { MessageSenderComponent } from '../../components/';
+import { AvatarComponent, MessageSenderComponent } from '../../components/';
 
 @Component({
-  imports: [DatePipe, MessageSenderComponent, ReactiveFormsModule],
+  imports: [
+    AvatarComponent,
+    DatePipe,
+    MessageSenderComponent,
+    ReactiveFormsModule,
+  ],
   providers: [ChatService],
   selector: 'app-chat',
   standalone: true,

@@ -8,9 +8,9 @@ import { AuthService } from '../../services';
   templateUrl: './login.component.html',
 })
 export class LoginComponent {
-  private authService = inject(AuthService);
+  private _authService = inject(AuthService);
 
   async handleAuth(): Promise<void> {
-    await this.authService.signInWithProvider('github');
+    await this._authService.signInWithProvider('github');
   }
 }

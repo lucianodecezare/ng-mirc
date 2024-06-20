@@ -5,17 +5,17 @@ import { IChatMessage } from '../interface';
 
 @Injectable()
 export class ChatService {
-  private supaBase!: SupabaseClient;
+  private _supaBase!: SupabaseClient;
 
   constructor() {
     const { supaBaseKey, supaBaseUrl } = environment;
 
-    this.supaBase = createClient(supaBaseUrl, supaBaseKey);
+    this._supaBase = createClient(supaBaseUrl, supaBaseKey);
   }
 
   public async chatMessage(text: string): Promise<void> {
     try {
-      const { error } = await this.supaBase.from('chat').insert({ text });
+      const { error } = await this._supaBase.from('chat').insert({ text });
 
       if (error) {
         throw error.message;
@@ -27,7 +27,7 @@ export class ChatService {
 
   public async listChat(): Promise<IChatMessage[]> {
     try {
-      const { data, error } = await this.supaBase
+      const { data, error } = await this._supaBase
         .from('chat')
         .select('*, users(*)');
 

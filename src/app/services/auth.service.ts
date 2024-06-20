@@ -7,20 +7,20 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class AuthService {
-  private supaBase!: SupabaseClient;
+  private _supaBase!: SupabaseClient;
 
-  private router = inject(Router);
+  private _router = inject(Router);
 
   constructor() {
     const { supaBaseKey, supaBaseUrl } = environment;
 
-    this.supaBase = createClient(supaBaseUrl, supaBaseKey);
+    this._supaBase = createClient(supaBaseUrl, supaBaseKey);
 
-    this.supaBase.auth.onAuthStateChange((event, session) => {
+    this._supaBase.auth.onAuthStateChange((event, session) => {
       localStorage.setItem('session', JSON.stringify(session?.user));
 
       if (session?.user) {
-        this.router.navigate(['/chat']);
+        this._router.navigate(['/chat']);
       }
     });
   }
@@ -36,12 +36,12 @@ export class AuthService {
   }
 
   public async signInWithProvider(provider: Provider): Promise<void> {
-    await this.supaBase.auth.signInWithOAuth({
+    await this._supaBase.auth.signInWithOAuth({
       provider,
     });
   }
 
   public async signOut(): Promise<void> {
-    await this.supaBase.auth.signOut();
+    await this._supaBase.auth.signOut();
   }
 }

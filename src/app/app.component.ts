@@ -7,6 +7,4 @@ import { RouterOutlet } from '@angular/router';
   standalone: true,
   templateUrl: './app.component.html',
 })
-export class AppComponent {
-  title = 'ng-mirc';
-}
+export class AppComponent {}

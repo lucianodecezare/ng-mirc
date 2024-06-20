@@ -32,22 +32,22 @@ import { MessageComponent } from '../../components/message/message.component';
   templateUrl: './chat.component.html',
 })
 export class ChatComponent {
-  private authService = inject(AuthService);
+  private _authService = inject(AuthService);
 
-  private changeDetector = inject(ChangeDetectorRef);
+  private _changeDetector = inject(ChangeDetectorRef);
 
-  private chatService = inject(ChatService);
+  private _chatService = inject(ChatService);
 
-  private formBuilder = inject(FormBuilder);
+  private _formBuilder = inject(FormBuilder);
 
-  private router = inject(Router);
+  private _router = inject(Router);
 
   public chatForm!: FormGroup;
 
   public chats = signal<IChatMessage[]>([]);
 
   constructor() {
-    this.chatForm = this.formBuilder.group({
+    this.chatForm = this._formBuilder.group({
       chat_message: ['', Validators.required],
     });
 
@@ -57,14 +57,14 @@ export class ChatComponent {
   }
 
   public tempValidatorRequired() {
-    this.changeDetector.detectChanges();
+    this._changeDetector.detectChanges();
   }
 
   public handleLogOut(): void {
-    this.authService
+    this._authService
       .signOut()
       .then(() => {
-        this.router.navigate(['/login']);
+        this._router.navigate(['/login']);
       })
       .catch((error) => {
         alert(error.message);
@@ -72,7 +72,7 @@ export class ChatComponent {
   }
 
   public onListChat(): void {
-    this.chatService
+    this._chatService
       .listChat()
       .then((res: IChatMessage[]) => {
         if (res !== null) {
@@ -88,7 +88,7 @@ export class ChatComponent {
     const { chatForm } = this;
     const { chat_message } = event;
 
-    this.chatService
+    this._chatService
       .chatMessage(chat_message)
       .then((res) => {
         chatForm.reset();

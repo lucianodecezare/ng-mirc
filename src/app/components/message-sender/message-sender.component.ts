@@ -20,9 +20,9 @@ export class MessageSenderComponent {
 
   @Output() onSubmit = new EventEmitter<any>();
 
-  private changeDetector = inject(ChangeDetectorRef);
+  private _changeDetector = inject(ChangeDetectorRef);
 
   public tempValidatorRequired() {
-    this.changeDetector.detectChanges();
+    this._changeDetector.detectChanges();
   }
 }

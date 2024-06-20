@@ -12,14 +12,14 @@
 
     .btn-logout {
       border-radius: 50%;
-      font-size: 24px;
-      height: 32px;
-      width: 32px;
+      font-size: $mediumLength3;
+      height: $largeLength1;
+      width: $largeLength1;
     }
 
     .bg-message {
       background-color: $lightBlack;
-      border-radius: 8px;
+      border-radius: $smallLength2;
     }
 
     .date-image-container {

@@ -7,9 +7,9 @@
 
   .btn-send {
     border-radius: 50%;
-    font-size: 24px;
-    height: 48px;
-    width: 48px;
+    font-size: $mediumLength3;
+    height: $largeLength2;
+    width: $largeLength2;
   }
 
   .form-bg {
@@ -21,10 +21,10 @@
 
     .input-text {
       background-color: $black;
-      border-radius: 8px;
+      border-radius: $smallLength2;
       border: 1px solid $silver;
       color: $white;
-      padding: 8px;
+      padding: $smallLength2;
 
       &:active,
       &:focus {
